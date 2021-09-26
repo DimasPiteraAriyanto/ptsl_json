@@ -23,7 +23,8 @@ class AjudikasiController extends Controller
         return view('auths.ajudikasi.index', compact('proyek'));
     }
 
-    public function json_ajudikasi_index(){
+    public function json_ajudikasi_index()
+    {
         $data = Ajudikasi::all();
 
         $jabatan_ajudikasi = array(
@@ -38,7 +39,7 @@ class AjudikasiController extends Controller
         );
 
         $dajudikasi = array();
-        foreach($data as $ajudikasi){
+        foreach ($data as $ajudikasi) {
             $dajudikasi[] = array(
                 'id' => $ajudikasi->id,
                 'proyek_id' => $ajudikasi->proyek->nama_proyek,
@@ -83,7 +84,7 @@ class AjudikasiController extends Controller
         $ajudikasi->golongan = $request->golongan;
         $ajudikasi->jabatan_ajudikasi = $request->jabatan_ajudikasi;
         $ajudikasi->save();
-        return response()->json($ajudikasi); 
+        return response()->json($ajudikasi);
     }
 
     /**
@@ -116,7 +117,7 @@ class AjudikasiController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {   
+    {
         $ajudikasi = Ajudikasi::find($id);
         $ajudikasi->proyek_id = $request->proyek_id;
         $ajudikasi->nip = $request->nip;

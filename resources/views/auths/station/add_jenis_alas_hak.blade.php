@@ -1,5 +1,5 @@
 @extends('auths.layouts.app')
-@section('title', 'Dashboard - PTSL')
+@section('title', 'Pemohon - PTSL')
 @section('content')
 <div class="x_panel">
   <div class="x_content">

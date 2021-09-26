@@ -8,24 +8,31 @@ use Illuminate\Database\Eloquent\Model;
 class Persil extends Model
 {
     use HasFactory;
-    protected $table = 'pemohon';
+    protected $table = 'persil';
     protected $fillable = [
-    	'pemohon_id',
-    	'penlok_id',
+        'pemohon_id',
+        'penlok_id',
         'ajudikasi_id',
-    	'nub',
-    	'luas_pengukuran',
-    	'penggunaan_tanah',
-    	'tanda_batas',
-    	'no_pbt',
-    	'no_gu',
-    	'no_berkas_fisik',
-    	'nib',
+        'alas_hak_id',
+        'nub',
+        'doc',
+        'tanda_batas',
+        'luas_pengukuran',
+        'penggunaan_tanah',
+        'no_pbt',
+        'no_gu',
+        'no_berkas_fisik',
+        'nib',
     ];
+
+    public function penlok()
+    {
+        return $this->belongsTo(Penlok::class);
+    }
 
     public function pemohon()
     {
-    	return $this->belongsTo(Pemohon::class);
+        return $this->belongsTo(Pemohon::class);
     }
 
     public function alas_hak()
@@ -35,8 +42,6 @@ class Persil extends Model
 
     public function ajudikasi()
     {
-    	return $this->belongsTo(Ajudikasi::class);
+        return $this->belongsTo(Ajudikasi::class);
     }
-
-
 }

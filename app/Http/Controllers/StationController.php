@@ -9,6 +9,7 @@ use App\Models\Penlok;
 use App\Models\Desa;
 use App\Models\AlasHak;
 use App\Models\JenisAlasHak;
+use App\Models\Persil;
 use Illuminate\Http\Request;
 use Redirect, Response;
 use Yajra\DataTables\DataTables;
@@ -43,19 +44,20 @@ class StationController extends Controller
                 'alas_hak',
             ));
         }elseif($doc == 3){
-            return view('auths.persil.index', compact('pid','nob','doc','penlok'));
-            $alas_hak = AlasHak::orderBy('id', 'DESC')
-            ->where('penlok_id', $pid)
-            ->where('nob', $nob)
-            ->get();
+            $persil = Persil::orderBy('id', 'DESC')
+                ->where('penlok_id', $pid)
+                ->where('nob', $nob)
+                ->get();
 
-            return view('auths.alas-hak.index', compact(
-            'pid',
-            'nob',
-            'doc',
-            'penlok',
-            'alas_hak',));
-    }}
+            return view('auths.persil.index', compact(
+                'pid',
+                'nob',
+                'doc',
+                'penlok',
+                'persil',
+            ));
+        }
+    }
 
     public function alas_hak_post(Request $request)
     {

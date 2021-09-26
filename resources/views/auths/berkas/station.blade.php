@@ -1,5 +1,5 @@
 @extends('auths.layouts.app')
-@section('title', 'Dashboard - PTSL')
+@section('title', 'Pemberkasan - PTSL')
 @section('content')
     <div class="x_panel">
 		<div class="x_content">
@@ -9,12 +9,12 @@
 			</div>
 			<div class="row">
 				<div class="col-md-12" style="margin-bottom: 10px;">
-                  <h4>{{$penlok->proyek->nama_proyek}}</h4>
-                  <span class="badge badge-info" style="padding: 8px; margin:1px;">Tahun: {{$penlok->proyek->tahun}}</span>
-                  <span class="badge badge-secondary" style="padding: 8px; margin:1px;">No. SK Penlok: {{$penlok->no_sk_penlok}}</span>
-                  <span class="badge badge-warning" style="padding: 8px; margin:1px;">Tanggal SK Penlok: {{$penlok->tanggal_sk_penlok->format('d F Y')}}</span>
-                  <span class="badge badge-success" style="padding: 8px; margin:1px;">Desa: {{$penlok->desa->nama_desa}}</span>
-                  <span class="badge badge-danger" style="padding: 8px; margin:1px;">No. Berkas: {{$nob}}</span>
+                    <h4>{{$penlok->proyek->nama_proyek}}</h4>
+                    <span class="badge badge-info" style="padding: 8px; margin:1px;">Tahun: {{$penlok->proyek->tahun}}</span>
+                    <span class="badge badge-secondary" style="padding: 8px; margin:1px;">No. SK Penlok: {{$penlok->no_sk_penlok}}</span>
+                    <span class="badge badge-warning" style="padding: 8px; margin:1px;">Tanggal SK Penlok: {{$penlok->tanggal_sk_penlok->format('d F Y')}}</span>
+                    <span class="badge badge-success" style="padding: 8px; margin:1px;">Desa: {{$penlok->desa->nama_desa}}</span>
+                    <span class="badge badge-danger" style="padding: 8px; margin:1px;">No. Berkas: {{$nob}}</span>
                 </div>
 				<div class="col-sm-12">
 					<div class="card-box table-responsive">
@@ -106,11 +106,11 @@
 					      { data: 'klaster', name: 'klaster' },
 					      { data: 'no_hp', name: 'no_hp' },
 					      { data: 'status_surat', name: 'status_surat' },
-					      { 	data: 'id', 
+					      { 	data: 'id',
 			                    name: 'action',
 			                    orderable: false,
 			                    searchable: false,
-			                    "render": function ( data, type, row, meta ) { 
+			                    "render": function ( data, type, row, meta ) {
 									return '<a href="{{route("berkas")."/"}}' + data + '/' + row.no_berkas + '" class="btn btn-info btn-sm btn-search" style="padding-top:1px !important; padding-bottom:1px !important;" onclick="editRecord(this.id);"><i class="fa fa-search"></i></a>'
 			                    }
 		                  },
