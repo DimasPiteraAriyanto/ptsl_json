@@ -26,7 +26,7 @@ class StationController extends Controller
         $nob = $request->nob;
         $doc = $request->doc;
         $penlok = Penlok::find($pid);
-        
+
         if($doc == 1){
             return view('auths.pemohon.index', compact('pid','nob','doc','penlok'));
         }elseif($doc == 2){
@@ -42,8 +42,20 @@ class StationController extends Controller
                 'penlok',
                 'alas_hak',
             ));
-        }
-    }
+        }elseif($doc == 3){
+            return view('auths.persil.index', compact('pid','nob','doc','penlok'));
+            $alas_hak = AlasHak::orderBy('id', 'DESC')
+            ->where('penlok_id', $pid)
+            ->where('nob', $nob)
+            ->get();
+
+            return view('auths.alas-hak.index', compact(
+            'pid',
+            'nob',
+            'doc',
+            'penlok',
+            'alas_hak',));
+    }}
 
     public function alas_hak_post(Request $request)
     {

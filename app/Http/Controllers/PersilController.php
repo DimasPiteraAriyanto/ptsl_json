@@ -27,10 +27,10 @@ class PersilController extends Controller
         $pid = $request->pid;
         $nob = $request->nob;
         $doc = $request->doc;
-        $alashak = $request->klaster;
-        $pemohon = $request->nama_pemohon;
-        $ajudikasi = $request->nama_pegawai;
-        return view('auths.persil.index', compact('penlok','alas_hak','ajudikasi','pemohon'));
+        $alas_hak = AlasHak::all();
+        $pemohon = Pemohon::all();
+        $ajudikasi = Ajudikasi::all();
+        return view('auths.persil.index', compact('alas_hak','ajudikasi','pemohon'));
 
 
 
@@ -43,8 +43,8 @@ class PersilController extends Controller
         foreach($data as $persil){
             $dpersil[] = array(
                 'id' => $persil->id,
-                'nama_pemohon' => $persil->pemohon->nama_pemohon,
-                'klaster' => $persil->alas_hak->klaster,
+                'pemohon_id' => $persil->pemohon->nama_pemohon,
+                'alas_hak_id' => $persil->alas_hak->klaster,
                 'nub' => $persil->nub,
                 'luas_pengukuran' => $persil->luas_pengukuran,
                 'penggunaan_tanah' => $persil->penggunaan_tanah,
@@ -53,7 +53,7 @@ class PersilController extends Controller
                 'no_gu' => $persil->no_gu,
                 'no_berkas_fisik' => $persil->no_berkas_fisik,
                 'nib' => $persil->nib,
-                'nama_pegawai' => $persil->ajudikasi->nama_pegawai,
+                'ajudikasi_id' => $persil->ajudikasi->nama_pegawai,
             );
         }
 
@@ -80,9 +80,9 @@ class PersilController extends Controller
     {
         $persil = new Persil();
         $persil->penlok_id = $request->pid;
-        $persil->ajudikasi_id = $request->pid;
-        $persil->alas_hak_id = $request->pid;
-        $persil->pemohon_id = $request->pid;
+        $persil->ajudikasi_id = $request->ajudikasi_id;
+        $persil->alas_hak_id = $request->alas_hak_id;
+        $persil->pemohon_id = $request->pemohon_id;
         $persil->nob = $request->nob;
         $persil->doc = $request->doc;
         $persil->luas_pengukuran = $request->luas_pengukuran;
@@ -96,10 +96,10 @@ class PersilController extends Controller
         return response()->json($persil);
     }
 
-    public function json_pemohon_edit(Request $request)
+    public function json_persil_edit(Request $request)
     {
-        $pemohon = Pemohon::find($request->id);
-        return response()->json($pemohon);
+        $persil = Persil::find($request->id);
+        return response()->json($persil);
     }
 
     /**
@@ -108,7 +108,7 @@ class PersilController extends Controller
      * @param  \App\Models\Pemohon  $pemohon
      * @return \Illuminate\Http\Response
      */
-    public function show(Pemohon $pemohon)
+    public function show(Persil $persil)
     {
         //
     }
@@ -119,7 +119,7 @@ class PersilController extends Controller
      * @param  \App\Models\Pemohon  $pemohon
      * @return \Illuminate\Http\Response
      */
-    public function edit(Pemohon $pemohon)
+    public function edit(Persil $persil)
     {
         //
     }
@@ -135,9 +135,9 @@ class PersilController extends Controller
     {
         $persil = Persil::find($persil->id);
         $$persil->penlok_id = $request->pid;
-        $persil->ajudikasi_id = $request->pid;
-        $persil->alas_hak_id = $request->pid;
-        $persil->pemohon_id = $request->pid;
+        $persil->ajudikasi_id = $request->ajudikasi_id;
+        $persil->alas_hak_id = $request->alas_hak_id;
+        $persil->pemohon_id = $request->pemohon_id;
         $persil->nob = $request->nob;
         $persil->doc = $request->doc;
         $persil->luas_pengukuran = $request->luas_pengukuran;
@@ -147,7 +147,7 @@ class PersilController extends Controller
         $persil->no_gu = $request->no_gu;
         $persil->no_berkas_fisik = $request->no_berkas_fisik;
         $persil->nib = $request->nib;
-        return response()->json($pemohon);
+        return response()->json($persil);
     }
 
     /**

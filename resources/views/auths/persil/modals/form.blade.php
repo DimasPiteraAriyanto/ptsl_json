@@ -32,82 +32,69 @@
             </div>
 
             <div class="item form-group">
-              <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Tempat Lahir <span class="required">*</span>
+              <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Luas Pengukuran <span class="required">*</span>
               </label>
               <div class="col-md-6 col-sm-6 ">
-                <input type="text" id="tempat_lahir" name="tempat_lahir" required="required" class="form-control ">
+                <input type="text" id="luas_pengukuran" name="luas_pengukuran" required="required" class="form-control ">
               </div>
             </div>
 
             <div class="item form-group">
-              <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Tanggal Lahir <span class="required">*</span>
+              <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Penggunaan Tanah <span class="required">*</span>
               </label>
               <div class="col-md-6 col-sm-6 ">
-                <input type="text" class="form-control has-feedback-left" id="tanggal_lahir" name="tanggal_lahir" required="required" aria-describedby="inputSuccess2Status4">
-                <span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
+                <input type="text" class="form-control" id="penggunaan_tanah" name="penggunaan_tanah" required="required">
               </div>
             </div>
 
             <div class="item form-group">
-              <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Pekerjaan <span class="required">*</span>
+              <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Tanda Batas <span class="required">*</span>
               </label>
               <div class="col-md-6 col-sm-6 ">
-                <input type="text" id="pekerjaan" name="pekerjaan" required="required" class="form-control ">
+                <input type="text" id="tanda_batas" name="tanda_batas" required="required" class="form-control ">
               </div>
             </div>
 
             <div class="item form-group">
-              <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Agama <span class="required">*</span>
+              <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">No. PBT <span class="required">*</span>
               </label>
               <div class="col-md-6 col-sm-6 ">
-                <input type="text" id="agama" name="agama" required="required" class="form-control ">
+                <input type="text" id="no_pbt" name="no_pbt" required="required" class="form-control ">
               </div>
             </div>
 
             <div class="item form-group">
-              <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Jenis Kelamin <span class="required">*</span>
+              <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">No. GU <span class="required">*</span>
               </label>
               <div class="col-md-6 col-sm-6 ">
-                <select class="form-control select2" style="width: 100%" multiple="multiple" id="jenis_kelamin" name="jenis_kelamin">
-                  @foreach(array(0 => "Laki-laki", 1 => "Perempuan") as $jk => $k)
-                      <option value="{{$jk}}">{{$k}}</option>
-                  @endforeach
-                </select>
+                <input type="text" name="no_gu" id="no_gu" class="form-control" required="required">
               </div>
             </div>
 
             <div class="item form-group">
-              <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Desa <span class="required">*</span>
+              <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">No Berkas Fisik <span class="required">*</span>
               </label>
               <div class="col-md-6 col-sm-6 ">
-                <input type="text" id="desa" name="desa" required="required" class="form-control ">
+                <input type="text" id="no_berkas_fisik" name="no_berkas_fisik" required="required" class="form-control ">
               </div>
             </div>
 
             <div class="item form-group">
-              <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Kecamatan <span class="required">*</span>
+              <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">NIB <span class="required">*</span>
               </label>
               <div class="col-md-6 col-sm-6 ">
-                <input type="text" id="kecamatan" name="kecamatan" required="required" class="form-control ">
+                <input type="text" id="nib" name="nib" required="required" class="form-control ">
               </div>
             </div>
 
             <div class="item form-group">
-              <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Kabupaten <span class="required">*</span>
+              <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Nama Panitia Ajudikasi <span class="required">*</span>
               </label>
               <div class="col-md-6 col-sm-6 ">
-                <input type="text" id="kabupaten" name="kabupaten" required="required" class="form-control ">
-              </div>
-            </div>
-
-            <div class="item form-group">
-              <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Jenis Pemohon <span class="required">*</span>
-              </label>
-              <div class="col-md-6 col-sm-6 ">
-                <select class="form-control select2" style="width: 100%" multiple="multiple" id="jenis_pemohon" name="jenis_pemohon">
-                  @foreach($jenis_pemohon as $pk => $p)
-                      <option value="{{$pk}}">{{$p}}</option>
-                  @endforeach
+                <select class="form-control select2" style="width: 100%" multiple="multiple" id="ajudikasi_id" name="ajudikasi_id">
+                    @foreach($ajudikasi as $ajud)
+                    <option value="{{(int)$ajud->id}}">{{$ajud->nama_pegawai}}</option>
+                    @endforeach
                 </select>
               </div>
             </div>

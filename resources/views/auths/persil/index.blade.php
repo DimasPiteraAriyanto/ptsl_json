@@ -50,7 +50,7 @@
 			</div>
 		</div>
 	<!-- modals -->
-	@include('auths.pemohon.modals.form')
+	@include('auths.persil.modals.form')
 	<!-- end Modals -->
 @endsection
 @section('scripts')
@@ -68,7 +68,7 @@
 
 			$.ajax({
 	            type: 'DELETE',
-	            url: SITEURL + 'pemohon/' + id,
+	            url: SITEURL + 'persil/' + id,
 	            success: function(data){
 	            	var table = $('#datatable_responsive').DataTable();
 	        		table.ajax.reload(null, false);
@@ -79,7 +79,7 @@
 
 	function editRecord(id) {
   		$(document).on('click', '.btn-edit', function() {
-  			$('.modal-title').text('Form Ubah Pemohon')
+  			$('.modal-title').text('Form Ubah Persil')
         	$('.f-add').modal('show');
         	$('.add').hide();
             $('.update').show();
@@ -87,44 +87,42 @@
 
     	$.ajax({
             type: 'GET',
-            url: SITEURL + "json/pemohon/" + id,
+            url: SITEURL + "json/persil/" + id,
 
             success: function(data) {
-                $('.modal-title').text('Form Ubah Pemohon')
+                $('.modal-title').text('Form Ubah Persil')
 	        	$('.f-add').modal('show');
-	        	$('#nik').val(data.nik)
-	        	$('#no_telp').val(data.no_telp)
-	        	$('#nama_pemohon').val(data.nama_pemohon)
-	        	$('#tempat_lahir').val(data.tempat_lahir)
-	        	$('#tanggal_lahir').val(data.tanggal_lahir)
-	        	$('#pekerjaan').val(data.pekerjaan)
-	        	$('#agama').val(data.agama)
-	        	$('#jenis_kelamin').val(data.jenis_kelamin).trigger('change')
-	        	$('#desa').val(data.desa)
-	        	$('#kecamatan').val(data.kecamatan)
-	        	$('#kabupaten').val(data.kabupaten)
-	        	$('#jenis_pemohon').val(data.jenis_pemohon).trigger('change')
+	        	$('#pemohon_id').val(data.pemohon_id).trigger('change');
+	        	$('#alas_hak_id').val(data.alas_hak_id).trigger('change');
+	        	$('#nub').val(data.nub)
+	        	$('#luas_pengukuran').val(data.luas_pengukuran)
+	        	$('#penggunaan_tanah').val(data.penggunaan_tanah)
+	        	$('#batas_tanah').val(data.batas_tanah)
+	        	$('#no_pbt').val(data.no_pbt)
+	        	$('#no_gu').val(data.no_gu)
+	        	$('#no_berkas_fisik').val(data.no_berkas_fisik)
+	        	$('#nib').val(data.nib)
+	        	$('#ajudikasi_id').val(data.ajudikasi_id).trigger('change')
 	        	$('.add').hide();
             	$('.update').show();
 
             	var clickHandler = function(e){
 			        $.ajax({
 			            type: 'PUT',
-			            url: SITEURL + "pemohon/" + id,
+			            url: SITEURL + "persil/" + id,
 			            cache : false,
 			            data: {
-		                    'nik' : $('#nik').val(),
-		                    'no_telp' : $('#no_telp').val(),
-		                    'nama_pemohon' : $('#nama_pemohon').val(),
-		                    'tempat_lahir' : $('#tempat_lahir').val(),
-		                    'tanggal_lahir' : $('#tanggal_lahir').val(),
-		                    'pekerjaan' : $('#pekerjaan').val(),
-		                    'agama' : $('#agama').val(),
-		                    'jenis_kelamin' : parseInt($('#jenis_kelamin').val()),
-		                    'desa' : $('#desa').val(),
-		                    'kecamatan' : $('#kecamatan').val(),
-		                    'kabupaten' : $('#kabupaten').val(),
-		                    'jenis_pemohon' : parseInt($('#jenis_pemohon').val()),
+		                    'pemohon_id' : parseInt($('#pemohon_id').val()),
+		                    'alas_hak_id' : parseInt($('#alas_hak_id').val()),
+		                    'nub' : $('#nub').val(),
+		                    'luas_pengukuran' : $('#luas_pengukuran').val(),
+		                    'penggunaan_tanah' : $('#penggunaan_tanah').val(),
+		                    'batas_tanah' : $('#batas_tanah').val(),
+		                    'no_pbt' : $('#no_pbt').val(),
+		                    'no_gu' : parseInt($('#no_gu').val()),
+		                    'no_berkas_fisik' : $('#no_berkas_fisik').val(),
+		                    'nib' : $('#nib').val(),
+		                    'ajudikasi_id' : parseInt($('#ajudikasi_id').val()),
 		                },
 			            success: function(data) {
 			                console.log(data)
@@ -171,16 +169,24 @@
 			serverSide: true,
 			ajax: {
 				type: 'POST',
-				url: SITEURL + "json/pemohon/" + pid + '/' + nob + '/' + doc,
+				url: SITEURL + "json/persil/" + pid + '/' + nob + '/' + doc,
 			},
 
 			columns: [
 			      { data: 'id', name: 'id', 'visible': true },
-			      { data: 'nama_pemohon', name: 'nama_pemohon' },
+			      { data: 'alas_hak_id', name: 'alas_hak_id' },
+			      { data: 'nub', name: 'nub' },
+			      { data: 'pemohon_id', name: 'pemohon_id' },
 			      { data: 'nik', name: 'nik' },
-			      { data: 'jenis_pemohon', name: 'jenis_pemohon' },
-			      { data: 'no_telp', name: 'no_telp' },
-			      { data: 'alamat', name: 'alamat' },
+			      { data: 'pemohon_id', name: 'pemohon_id' },
+                  { data: 'no_berkas_fisik', name: 'no_berkas_fisik'},
+                  { data: 'no_pbt', name: 'no_pbt' },
+                  { data: 'nib', name: 'nib' },
+                  { data: 'no_gu', name: 'no_gu'},
+                  { data: 'luas_pengukuran', name: 'luas_pengukuran' },
+                  { data: 'penggunaan_tanah', name: 'penggunaan_tanah'},
+                  { data: 'tanda_batas', name: 'tanda_batas'},
+                  { data: 'ajudikasi_id', name: 'ajudikasi_id'}
 			      { 	data: 'id',
 	                    name: 'action',
 	                    orderable: false,
@@ -198,7 +204,7 @@
 			$('.select2').val('').trigger("change");
             $('#form-add')[0].reset();
             $('.f-add').modal('hide');
-  			$('.modal-title').text('Form Tambah Pemohon')
+  			$('.modal-title').text('Form Tambah Persil')
         	$('.f-add').modal('show');
         	$('.add').show();
             $('.update').hide();
@@ -208,34 +214,32 @@
 	        var pid = $('#pid').val();
 	        var nob = $('#nob').val();
 	        var doc = $('#doc').val();
-	        var nik = $('#nik').val();
-	        var no_telp = $('#no_telp').val();
-	        var nama_pemohon = $('#nama_pemohon').val();
-	        var tempat_lahir = $('#tempat_lahir').val();
-	        var tanggal_lahir = $('#tanggal_lahir').val();
-	        var pekerjaan = $('#pekerjaan').val();
-	        var agama = $('#agama').val();
-	        var jenis_kelamin = $('#jenis_kelamin').val();
-	        var desa = $('#desa').val();
-	        var kecamatan = $('#kecamatan').val();
-	        var kabupaten = $('#kabupaten').val();
-	        var jenis_pemohon = $('#jenis_pemohon').val();
+	        var pemohon_id = $('#pemohon_id').val();
+	        var alas_hak_id = $('#alas_hak_id').val();
+	        var nub = $('#nub').val();
+	        var luas_pengukuran = $('#luas_pengukuran').val();
+	        var penggunaan_tanah = $('#penggunaan_tanah').val();
+	        var tanda_batas = $('#tanda_batas').val();
+	        var no_pbt = $('#no_pbt').val();
+	        var no_gu = $('#no_gu').val();
+	        var no_berkas_fisik = $('#no_berkas_fisik').val();
+	        var nib = $('#nib').val();
+	        var ajudikasi_id = $('#ajudikasi_id').val();
 	        var data = new FormData();
 	        data.append('pid', pid);
 	        data.append('nob', nob);
 	        data.append('doc', doc);
-	        data.append('nik', nik);
-	        data.append('no_telp', no_telp);
-	        data.append('nama_pemohon', nama_pemohon);
-	        data.append('tempat_lahir', tempat_lahir);
-	        data.append('tanggal_lahir', tanggal_lahir);
-	        data.append('pekerjaan', pekerjaan);
-	        data.append('agama', agama);
-	        data.append('jenis_kelamin', jenis_kelamin);
-	        data.append('desa', desa);
-	        data.append('kecamatan', kecamatan);
-	        data.append('kabupaten', kabupaten);
-	        data.append('jenis_pemohon', jenis_pemohon);
+	        data.append('pemohon_id', pemohon_id);
+	        data.append('alas_hak_id', alas_hak_id);
+	        data.append('nub', nub);
+	        data.append('luas_pengukuran', luas_pengukuran);
+	        data.append('penggunaan_tanah', penggunaan_tanah);
+	        data.append('tanda_batas', tanda_batas);
+	        data.append('no_pbt', no_pbt);
+	        data.append('no_gu', no_gu);
+	        data.append('no_berkas_fisik', no_berkas_fisik);
+	        data.append('nib', nib);
+	        data.append('ajudikasi_id', ajudikasi_id);
 
 	        $.ajaxSetup({
 				headers: {
@@ -245,7 +249,7 @@
 
 	        $.ajax({
 	            type: 'POST',
-	            url: SITEURL + "pemohon",
+	            url: SITEURL + "persil",
 	            cache       : false,
 	            contentType : false,
 	            processData : false,

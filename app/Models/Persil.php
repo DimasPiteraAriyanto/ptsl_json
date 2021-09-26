@@ -23,9 +23,9 @@ class Persil extends Model
     	'nib',
     ];
 
-    public function penlok()
+    public function pemohon()
     {
-    	return $this->belongsTo(Penlok::class);
+    	return $this->belongsTo(Pemohon::class);
     }
 
     public function alas_hak()
@@ -33,5 +33,10 @@ class Persil extends Model
         return $this->hasMany(AlasHak::class);
     }
 
-    
+    public function ajudikasi()
+    {
+    	return $this->belongsTo(Ajudikasi::class);
+    }
+
+
 }
